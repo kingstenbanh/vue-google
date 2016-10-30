@@ -3,7 +3,8 @@
     type="button"
     name="button"
     class="kb-button"
-    :class="classNames">
+    :class="classNames"
+    @click="clickButton">
     <slot></slot>
   </button>
 </template>
@@ -21,6 +22,11 @@ export default {
         'kb-button--primary': this.type === 'primary',
         'kb-button--icon': this.type === 'icon',
       };
+    },
+  },
+  methods: {
+    clickButton() {
+      this.$emit('clickButton');
     },
   },
 };

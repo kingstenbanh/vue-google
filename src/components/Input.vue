@@ -1,6 +1,14 @@
 <template lang="html">
   <div class="kb-input">
-    <input type="text" name="name" class="kb-input__field" :style="styles">
+    <input
+      type="text"
+      name="name"
+      class="kb-input__field"
+      :style="styles"
+      :value="value"
+      @input="onInput"
+      @keyup.enter="onEnter"
+    >
     <i v-if="icon" class="material-icons kb-input__icon">{{ icon }}</i>
   </div>
 </template>
@@ -11,12 +19,20 @@ export default {
   components: {
 
   },
-  props: ['icon'],
+  props: ['value', 'icon'],
   computed: {
     styles() {
       return {
         marginLeft: this.icon ? '42px' : 0,
       };
+    },
+  },
+  methods: {
+    onInput(event) {
+      this.$emit('input', event.target.value);
+    },
+    onEnter() {
+      this.$emit('onEnter');
     },
   },
 };

@@ -10,10 +10,15 @@
 
     <div class="app__body">
       <img class="google-logo" src="../static/images/google.png" />
-      <vue-input class="search-bar" icon="keyboard_voice" />
+      <vue-input
+        class="search-bar"
+        icon="keyboard_voice"
+        v-model="searchInput"
+        @onEnter="search"
+      />
 
       <div class="button-container">
-        <vue-button>Google Search</vue-button>
+        <vue-button @clickButton="search">Google Search</vue-button>
         <vue-button>I'm Feeling Lucky</vue-button>
       </div>
     </div>
@@ -78,7 +83,13 @@ export default {
           }],
         },
       },
+      searchInput: '',
     };
+  },
+  methods: {
+    search() {
+      window.location = `https://www.google.com/search?q=${this.searchInput}`; // eslint-disable-line no-undef
+    },
   },
 };
 </script>
