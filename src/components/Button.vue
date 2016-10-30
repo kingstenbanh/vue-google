@@ -19,13 +19,14 @@ export default {
     classNames() {
       return {
         'kb-button--primary': this.type === 'primary',
+        'kb-button--icon': this.type === 'icon',
       };
     },
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   button {
     &:hover,
     &:active,
@@ -68,6 +69,15 @@ export default {
         border-color: #4285f4;
         color: #fff;
       }
+    }
+
+    &--icon {
+      background-image: none;
+      background-color: transparent;
+      border: 0;
+      line-height: 12px;
+      min-width: 36px;
+      padding: 0;
     }
   }
 </style>
